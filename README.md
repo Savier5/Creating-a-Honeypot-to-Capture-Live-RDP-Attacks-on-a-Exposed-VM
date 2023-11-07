@@ -15,7 +15,7 @@ The Map after 12 hours of running the VM:
 The Map after 24 hours of running the VM:
 ![24h](https://github.com/Savier5/Creating-a-Honeypot-to-Capture-Live-RDP-Cyberattacks-on-a-Exposed-VM/assets/55478673/324fe9b4-769f-4aa0-871c-ef159e9db73d)
 
-I can give you an overview of how the project was created if you want to replicate it (Note: You would want to put the region to your region so their is no issue with the times of the attack):
+I can give you an overview of how the project was created if you want to replicate it (Note: You would want to put the region to your region so there is no issue with the times of the attack):
 
   1. You would need to create an account if you don't have one with Microsoft Azure.
 
@@ -35,24 +35,26 @@ I can give you an overview of how the project was created if you want to replica
 
   9. You want to be able to use the data from Event Viewer to get the attacker's location and I used https://ipgeolocation.io/ to get the locations in the script. You need to create the account and then get an API key and save it to the script (Log_Exporter.ps1). Open the script in the VM and run it. The script will create a folder at C:\ProgramData\ and name it failed_rdp.log. You would want to open another Remote Desktop Connection and put in the wrong credentials, logging into the VM. This will create events in the failed_rdp.log log file.
 
-  10. Copy everything in the failed_rdp.log in the VM and create new one like it into your actual computer. THis will be used to train the 
+  10. Copy everything in the failed_rdp.log in the VM and create a new one like it into your actual computer, this will be used as a sample. 
 
-  11. s
+  11. Go to Log Analytics workspace, then your log, click on Tables, create, and New custom logs (MMA-based) to create a custom log. Select the sample log file on your actual computer. In the Collection Path, put Windows, the path of the log file in the VM (C:\ProgramData\failed_rdp.log), name it something like FAILED_RDP then finish the setup.
 
-  12. s
+  12. Open Microsoft Sentinel, go to Workbooks and add a workbook. Edit and remove the ones already there, then add a query. Add this in the query:
 
-  13. s
+      FAILED_RDP_CL 
+        | extend username = extract(@"username:([^,]+)", 1, RawData),
+         timestamp = extract(@"timestamp:([^,]+)", 1, RawData),
+         latitude = extract(@"latitude:([^,]+)", 1, RawData),
+         longitude = extract(@"longitude:([^,]+)", 1, RawData),
+         sourcehost = extract(@"sourcehost:([^,]+)", 1, RawData),
+         state = extract(@"state:([^,]+)", 1, RawData),
+         label = extract(@"label:([^,]+)", 1, RawData),
+         destination = extract(@"destinationhost:([^,]+)", 1, RawData),
+         country = extract(@"country:([^,]+)", 1, RawData)
+      | where destination != "samplehost"
+      | where sourcehost != ""
+      | summarize event_count=count() by latitude, longitude, sourcehost, label, destination, country
 
-  14. s
+ Change the visualization to map, and make the map size to Full to get a bigger map. In the map settings, you can change the settings to show the latitude, longitude, label for the countries, etc. 
 
-  15. s
-
-  16. s
-
-  17. s
-
-  18. s
-
-  19. s
-
-  20. s
+ You are all done! You need to leave the VM running to keep the script running and it should start populating with attacks at different locations in just a few hours.

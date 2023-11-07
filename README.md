@@ -1,4 +1,4 @@
-# Creating a Honeypot to Capture Live RDP Cyberattacks on an Exposed VM
+# Creating a Honeypot to Capture Live RDP Cyberattacks on an Exposed VM in Azure
 
 In this project, I have configured Azure Sentinel (SIEM) and established its integration with a live virtual machine designed as a honeypot. This setup enables the live monitoring of potential attacks, specifically RDP Brute Force incidents originating from various global locations. To enhance our threat intelligence, a PowerShell script has been developed to extract and investigate the geolocation details of these attackers. The aim is to utilize this information for visualization on the Azure Sentinel Map, providing a geographical perspective of the detected threat origins.
 

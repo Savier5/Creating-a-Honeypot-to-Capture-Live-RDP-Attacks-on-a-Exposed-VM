@@ -6,3 +6,12 @@ The image below shows my PowerShell script running and getting the location from
 
 ![image](https://github.com/Savier5/Creating-a-Honeypot-to-Capture-Live-RDP-Attacks-on-a-Exposed-VM/assets/55478673/204bac96-87ae-4e58-a881-fc76c17922f1)
 
+The Map after 6 hours of running the VM:
+![6h](https://github.com/Savier5/Creating-a-Honeypot-to-Capture-Live-RDP-Cyberattacks-on-a-Exposed-VM/assets/55478673/9fd3e728-1878-4937-8656-8ba62439e44d)
+
+The Map after 12 hours of running the VM:
+![12h](https://github.com/Savier5/Creating-a-Honeypot-to-Capture-Live-RDP-Cyberattacks-on-a-Exposed-VM/assets/55478673/e78ec3db-7eed-417b-9e00-c0d20286cb59)
+
+The Map after 24 hours of running the VM:
+![24h](https://github.com/Savier5/Creating-a-Honeypot-to-Capture-Live-RDP-Cyberattacks-on-a-Exposed-VM/assets/55478673/324fe9b4-769f-4aa0-871c-ef159e9db73d)
+

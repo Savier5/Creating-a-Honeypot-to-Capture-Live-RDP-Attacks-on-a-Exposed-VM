@@ -6,6 +6,12 @@ The image below shows a PowerShell script running and getting the location from 
 
 ![image](https://github.com/Savier5/Creating-a-Honeypot-to-Capture-Live-RDP-Attacks-on-a-Exposed-VM/assets/55478673/204bac96-87ae-4e58-a881-fc76c17922f1)
 
+The honeypot saw that attackers were using these usernames to try to access my VM:
+
+d'utilisateurs | comptes | Administrateur | \\ | de | Invit‚ | admin | Administrator | Test | 的用户帐户 | for | accounts | User | administrator | STUDENT | box2 | Diag | ESRAYA | CATicala | ArkMGWarranty | ADMINISTRATOR | ArkMGLiaison | ADMIN | APAranda | AManlises | AGJARINA | win | AZUREADMIN | ACruz | BClaudio | ArkTechnician | ARKSERVER
+
+The first 6 usernames had 3800+ failed login attempts in the list and I presume they came from Tunisia as a great amount of traffic came from Tunisia.
+
 The Map after 6 hours of running the VM:
 ![6h](https://github.com/Savier5/Implementing-a-RDP-Honeypot-in-Azure/assets/55478673/909e9b26-e513-4ad9-a210-89a7896a4532)
 
